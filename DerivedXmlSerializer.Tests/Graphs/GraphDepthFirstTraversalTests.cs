@@ -38,9 +38,10 @@ namespace DerivedXmlSerializer
         [Test]
         public void TestGraphExploration()
         {
+            var actual = new TestGraph().DepthFirstSearch("car", MarkerFactory.CreateMarker<string>).ToArray();
             CollectionAssert.AreEquivalent(
                 new [] {"car", "cargo", "wheel", "fruit", "apple", "banana"},
-                Algorithms.DepthFirstSearch(new TestGraph(), "car", MarkerFactory.CreateMarker<string>));
+                actual);
         }
     }
 }

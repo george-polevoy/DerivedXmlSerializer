@@ -42,7 +42,7 @@ namespace DerivedXmlSerializer.Graphs
                     context.Mark(current);
                 }
                 yield return current;
-                foreach (var w in graph.GetAdjacent(current)) s.Push(w);
+                foreach (var w in graph.GetAdjacent(current).Where(i => context == null || !context.IsMarked(i))) s.Push(w);
             }
         }
 
@@ -67,9 +67,10 @@ namespace DerivedXmlSerializer.Graphs
                 {
                     if (!i.MoveNext())
                         yield break;
+                    var next = i.Current;
                     if (i.MoveNext())
                         throw new InvalidOperationException("Ancestry graph lead to multiple parents, which is not allowed");
-                    current = i.Current;
+                    current = next;
                     yield return current;
                 }
             } while (true);

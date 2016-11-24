@@ -55,6 +55,7 @@
     <Compile Include="TypeExploration\SampleTypes\TestBaseContainer.cs" />
     <Compile Include="TypeExploration\SampleTypes\TestDerivedArrayItem2.cs" />
     <Compile Include="TypeExploration\TypeSystemDiscoveryGraphTests.cs" />
+    <Compile Include="TypeExploration\XmlSerializerBlackBoxTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

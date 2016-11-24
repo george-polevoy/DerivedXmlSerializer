@@ -1,4 +1,6 @@
-﻿namespace DerivedXmlSerializer.TypeExploration.SampleTypes
+﻿using System.Collections.Generic;
+
+namespace DerivedXmlSerializer.TypeExploration.SampleTypes
 {
     public abstract class TestBaseContainer
     {

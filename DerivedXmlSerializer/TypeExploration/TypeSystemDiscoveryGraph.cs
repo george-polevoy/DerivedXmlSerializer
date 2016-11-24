@@ -25,7 +25,7 @@ namespace DerivedXmlSerializer.TypeExploration
         public static IGraph<Type> Create(IEnumerable<Type> allTypes)
         {
             return
-                new TypeAncestry()
+                new TypeAncestry().Where(t => t != typeof(object))
                  .ToDescendancy(allTypes, EqualityComparer<Type>.Default)
                  .Concat(new DirectMemberTypeRelations())
                  ;

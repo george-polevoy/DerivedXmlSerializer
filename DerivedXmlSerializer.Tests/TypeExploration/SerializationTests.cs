@@ -10,6 +10,21 @@ namespace DerivedXmlSerializer.TypeExploration
     public class SerializationTests
     {
         [Test]
+        public void CanUseXmlSchemaImporterToDetectUnserializableTypes()
+        {
+            var importer = new XmlReflectionImporter();
+            for (var i = 0; i < 40000; i++)
+            try
+            {
+                    importer.ImportTypeMapping(typeof(Dictionary<string, string>));
+                    Assert.Fail("Should have failed.");
+            }
+            catch (NotSupportedException e)
+            {
+            }
+        }
+
+        [Test]
         public void CanSerializeDerivedUnreferencedType()
         {
             var allTypes = new[]
@@ -19,6 +34,7 @@ namespace DerivedXmlSerializer.TypeExploration
                 typeof(TestDerivedArrayItem1),
                 typeof(TestDerivedArrayItem2),
             };
+
             var allSerializers = XmlSerializer.FromTypes(allTypes);
             var serializerDictionary = Enumerable.Range(0, allTypes.Length)
                 .ToDictionary(i => allTypes[i], i => allSerializers[i]);
