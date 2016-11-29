@@ -45,7 +45,6 @@
     <Compile Include="Graphs\GraphUnion.cs" />
     <Compile Include="Graphs\HashSetMarker.cs" />
     <Compile Include="Graphs\IMarker.cs" />
-    <Compile Include="Graphs\NonRecursiveDepthFirstSearch.cs" />
     <Compile Include="Graphs\IGraph.cs" />
     <Compile Include="Graphs\IGraphSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

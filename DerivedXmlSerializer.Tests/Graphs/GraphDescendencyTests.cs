@@ -35,10 +35,7 @@ namespace DerivedXmlSerializer.Graphs
         [Test]
         [TestCase("a", "b")]
         [TestCase("b", "d")]
-        [TestCase("a", "d")]
         [TestCase("d", "e")]
-        [TestCase("b", "e")]
-        [TestCase("a", "e")]
         [TestCase("f", "g")]
         public void BuildsDescendencyGivenAncestry(string ancestor, string descendant)
         {
@@ -53,7 +50,7 @@ namespace DerivedXmlSerializer.Graphs
         [Test]
         public void WalksAncestryWithDepthFirstSearch()
         {
-            var items = Algorithms.DepthFirstSearchAcyclic(new TestAncestry(), "e").ToList();
+            var items = new TestAncestry().DepthFirstSearch("e", MarkerFactory.CreateMarker<string>).ToList();
 
             CollectionAssert.AreEqual(new[] { "e", "d", "b", "a" }, items);
         }
